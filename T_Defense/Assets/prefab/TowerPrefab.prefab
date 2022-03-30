@@ -184,7 +184,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 608447348202909443}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -6.31, y: 2.43, z: -0.89}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 608447349025641710}
@@ -205,6 +205,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Catcher: 0
   shootElement: {fileID: 608447348728682051}
+  Towerbug: {fileID: 0}
   LookAtObj: {fileID: 608447349143852231}
   bullet: {fileID: 5926425681113021469, guid: d3adddb57862a7f46ae4adaf487b8a0c, type: 3}
   DestroyParticle: {fileID: 0}
@@ -214,7 +215,6 @@ MonoBehaviour:
   shootDelay: 1.2
   anim_2: {fileID: 0}
   TowerHp: {fileID: 0}
-  nowUp: 1
 --- !u!65 &608447348202909470
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -226,8 +226,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 2, z: 1}
-  m_Center: {x: 0, y: 1, z: 0}
+  m_Size: {x: 1, y: 3, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &608447348401272376
 GameObject:
   m_ObjectHideFlags: 0

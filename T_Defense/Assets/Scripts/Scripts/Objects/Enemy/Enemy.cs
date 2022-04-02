@@ -1,10 +1,8 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class Enemy : MonoBehaviour {
     
-    public Transform shootElement;
-    public GameObject bullet;
     public GameObject Enemybug;
     public int Creature_Damage = 10;    
     public float Speed;
@@ -42,25 +40,12 @@ public class Enemy : MonoBehaviour {
             anim.SetBool("Attack", true);
         }
     }
-
-    // Attack
-    void Shooting ()
-    {
-        // if (EnemyTarget)
-        // {           
-            GameObject с = GameObject.Instantiate(bullet, shootElement.position, Quaternion.identity) as GameObject;
-            с.GetComponent<EnemyBullet>().target = target;
-            с.GetComponent<EnemyBullet>().twr = this;
-        // }  
-
-    }
-
-    
-
     void GetDamage ()
-
-    {        
-            EnemyTarget.GetComponent<TowerHP>().Dmg_2(Creature_Damage);       
+    {   
+        if (EnemyTarget) {
+            Debug.Log("GetDamage " + EnemyTarget.name);
+            EnemyTarget.GetComponent<TowerHP>().Dmg_2(Creature_Damage);
+        }     
     }
 
     
@@ -68,33 +53,34 @@ public class Enemy : MonoBehaviour {
 
     void Update () 
 	{
-
-        
-        //Debug.Log("Animator  " + anim);
-
-
         // MOVING
-
+        #region 이동 이벤트
         if (curWaypointIndex < waypoints.Length){
-	        transform.position = Vector3.MoveTowards(transform.position,waypoints[curWaypointIndex].position,Time.deltaTime*Speed);
             
-            if (!EnemyTarget)
+            if (waypoints[curWaypointIndex] != null)
             {
-                transform.LookAt(waypoints[curWaypointIndex].position);
+                transform.position = Vector3.MoveTowards(transform.position,waypoints[curWaypointIndex].position,Time.deltaTime*Speed);
+                // Debug.Log("WayPoint" + waypoints[curWaypointIndex].name);
+            
+                if (!EnemyTarget)
+                {
+                    transform.LookAt(waypoints[curWaypointIndex].position);
+                }
+        
+                if(Vector3.Distance(transform.position,waypoints[curWaypointIndex].position) < 0.5f)
+                {
+                    curWaypointIndex++;
+                }    
             }
-	
-	        if(Vector3.Distance(transform.position,waypoints[curWaypointIndex].position) < 0.5f)
-	        {
-		        curWaypointIndex++;
-	        }    
 	    }          
-
         else
         {
             anim.SetBool("Victory", true);  // Victory
         }
+        #endregion
 
         // DEATH
+        #region 몬스터 죽을 때 이벤트
         // Death time 
         if (Enemy_Hp.EnemyHP <= 0)
         {
@@ -108,27 +94,44 @@ public class Enemy : MonoBehaviour {
                 v.y += (float)0.5;
                 Instantiate(CoinPrefab, v, gameObject.transform.rotation); 
                 isCoin = false;
-            }            
+            }
         }
+        #endregion
 
         // Attack to Run
-                
-
-        if (EnemyTarget)        {
-
-          
+        #region 성 파괴시 이벤트
+        // 최종 목표 파괴시 idle 상태로 전환 및 더이상 이동 X
+        if (EnemyTarget) {
             if (EnemyTarget.CompareTag("Castle_Destroyed")) // get it from BuildingHp
             {
                 anim.SetBool("Attack", false);
-                anim.SetBool("RUN", true);
-                Speed = previous_Speed;               
-                EnemyTarget = null;                
+                anim.SetBool("Idle", true);
+                Speed = 0;
+                EnemyTarget = null; 
+                // 성 파괴시 이동을 막기위해 다음 이동을 위한 index를 최종 값으로 변환시킴 # 62번째 줄에서 if문을 통해 이동 방지
+                curWaypointIndex = waypoints.Length;
             }
         }
-
-
+        #endregion
     }
-       
+
+
+    #region NotUse
+    // public Transform shootElement;
+    // public GameObject bullet;
+    // Attack
+    //void Shooting ()
+    //{
+        // if (EnemyTarget)
+        // {           
+            // GameObject с = GameObject.Instantiate(bullet, shootElement.position, Quaternion.identity) as GameObject;
+            // с.GetComponent<EnemyBullet>().target = target;
+            // с.GetComponent<EnemyBullet>().twr = this;
+        // }  
+
+    // }
+        
+    #endregion 
    
 }
 

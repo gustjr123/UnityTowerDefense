@@ -10,7 +10,6 @@ public class ButtonManager : MonoBehaviour
     private GameManager gm => GameManager.Instance;
     
     void Start() {
-        Debug.Log("Good");
         btn_Remove.onClick.AddListener(() => Remove());
         btn_Upgrade.onClick.AddListener(() => Upgrade());
     }

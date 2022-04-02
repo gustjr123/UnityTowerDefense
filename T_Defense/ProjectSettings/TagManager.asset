@@ -12,6 +12,7 @@ TagManager:
   - WaveStart
   - Tower
   - Dead
+  - Castle_Destroyed
   layers:
   - Default
   - TransparentFX

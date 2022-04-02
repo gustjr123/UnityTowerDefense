@@ -54,7 +54,7 @@ public class WaveSpawn : MonoBehaviour {
 		// Instantiate(StartButton, tempP.position, this.transform.rotation);
 
 
-		Instantiate(StartButton, new Vector3((float)2.7, (float)4.5, (float)-2.65), this.transform.rotation);
+		Instantiate(StartButton, new Vector3((float)15.5, (float)4.5, (float)-16), this.transform.rotation);
 
 	}
 }

@@ -1071,11 +1071,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 153dd393b80768d4d8587c484df95783, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shootElement: {fileID: 0}
-  bullet: {fileID: 0}
   Enemybug: {fileID: 2136493347576447029}
   Creature_Damage: 10
-  Speed: 2
+  Speed: 20
   waypoints:
   - {fileID: 0}
   previous_Speed: 0

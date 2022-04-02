@@ -53,9 +53,8 @@ public class GameManager : MonoBehaviour
         status = GameObject.Find("Status").GetComponent<Text>();
         // 게임 실행상태 설정
         gState = GameState.Play;
-        Debug.Log("Starting");
         this.veiling();
-        int Hp = GameObject.Find("Castle").GetComponent<TowerHP>().CastleHp;
+        int Hp = GameObject.Find("OurHouse").GetComponent<TowerHP>().CastleHp;
         GameObject.Find("hpOfCastle").GetComponent<Text>().text = "Castle HP : " + Hp.ToString();
         // 게임종료상태 설정
     }

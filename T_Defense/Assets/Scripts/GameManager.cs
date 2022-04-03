@@ -56,6 +56,8 @@ public class GameManager : MonoBehaviour
         this.veiling();
         int Hp = GameObject.Find("OurHouse").GetComponent<TowerHP>().CastleHp;
         GameObject.Find("hpOfCastle").GetComponent<Text>().text = "Castle HP : " + Hp.ToString();
+        nowGold();
+        NowRound();
         // 게임종료상태 설정
     }
 
@@ -96,7 +98,7 @@ public class GameManager : MonoBehaviour
         this.NowRound();
         // data = {라운드 시작되는 term, 소환 interval, 반복횟수}
         // {x, y, z} => x초 후에 y초 간격으로 z번 반복해라
-        float[] data = new float[3]{1, 2, nowRound * 5};
+        float[] data = new float[3]{1, 2, nowRound * 1};
         GameObject.Find("Gate").SendMessage("WaveStart", data);
         Destroy(obj);
     }
@@ -142,7 +144,6 @@ public class GameManager : MonoBehaviour
         isSelected = Instantiate(TowerPrefab, temp.transform.position, Quaternion.Euler(0f, 0f, 0f));
         SelectedObject = obj;
 
-        // Todo
         Status();
     }
 

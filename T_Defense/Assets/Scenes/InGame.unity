@@ -1188,7 +1188,7 @@ PrefabInstance:
         type: 3}
       propertyPath: EnemyPrefab
       value: 
-      objectReference: {fileID: 2136852714620289449, guid: ec28764d58a6f4d498919a3e74fd2521,
+      objectReference: {fileID: 2721002255336696026, guid: 33abdb92ef90410479b9f76056bb1031,
         type: 3}
     - target: {fileID: 114626765331631312, guid: 1b352ac888813eb4e82202267ad9b627,
         type: 3}
@@ -1200,6 +1200,11 @@ PrefabInstance:
         type: 3}
       propertyPath: WayPoints.Array.size
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 114626765331631312, guid: 1b352ac888813eb4e82202267ad9b627,
+        type: 3}
+      propertyPath: EnemyPrefab.Array.size
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 114626765331631312, guid: 1b352ac888813eb4e82202267ad9b627,
         type: 3}
@@ -1246,6 +1251,18 @@ PrefabInstance:
       propertyPath: WayPoints.Array.data[8]
       value: 
       objectReference: {fileID: 1808655547}
+    - target: {fileID: 114626765331631312, guid: 1b352ac888813eb4e82202267ad9b627,
+        type: 3}
+      propertyPath: EnemyPrefab.Array.data[0]
+      value: 
+      objectReference: {fileID: 2136852714620289449, guid: ec28764d58a6f4d498919a3e74fd2521,
+        type: 3}
+    - target: {fileID: 114626765331631312, guid: 1b352ac888813eb4e82202267ad9b627,
+        type: 3}
+      propertyPath: EnemyPrefab.Array.data[1]
+      value: 
+      objectReference: {fileID: 2721002255336696026, guid: 33abdb92ef90410479b9f76056bb1031,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1b352ac888813eb4e82202267ad9b627, type: 3}
 --- !u!4 &164815783 stripped

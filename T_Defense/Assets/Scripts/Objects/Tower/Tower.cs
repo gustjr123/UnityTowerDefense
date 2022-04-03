@@ -19,7 +19,7 @@ public class Tower : MonoBehaviour {
     public TowerHP TowerHp;    
     private float homeY;
     
-    private int MaxUp = 10;
+    //  private int MaxUp = 10;
     public int nowUp = 1;
 
     // for Catcher tower 

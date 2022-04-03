@@ -10,11 +10,11 @@ public class TowerTrigger : MonoBehaviour {
 
 	void OnTriggerStay(Collider other) {
 		if(other.CompareTag("enemyBug") && !lockE)
-			{   
-				twr.target = other.gameObject.transform;            
-				curTarget = other.gameObject;
-				lockE = true;
-			}
+		{   
+			twr.target = other.gameObject.transform;            
+			curTarget = other.gameObject;
+			lockE = true;
+		}
 	}
 
 	void Update()

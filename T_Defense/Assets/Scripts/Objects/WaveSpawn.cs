@@ -4,12 +4,13 @@ public class WaveSpawn : MonoBehaviour {
 
 	public int WaveSize;
 	public int totalWave;
-	public GameObject EnemyPrefab;
+	public GameObject[] EnemyPrefab;
 	public GameObject StartButton;
 	public Transform spawnPoint;
 	public Transform[] WayPoints;
 	int enemyCount=0;
 	int wavecount = 0;
+	int nowEnemy = 0;
 
 	void Update()
 	{
@@ -28,9 +29,16 @@ public class WaveSpawn : MonoBehaviour {
 	void SpawnEnemy()
 	{
 		enemyCount++;
-		GameObject enemy = GameObject.Instantiate(EnemyPrefab,spawnPoint.position,Quaternion.identity) as GameObject;
+		GameObject enemy = GameObject.Instantiate(EnemyPrefab[nowEnemy],spawnPoint.position,Quaternion.identity) as GameObject;
         
-		enemy.GetComponent<Enemy>().waypoints = WayPoints;
+		// Mushroom 예외
+		if (enemy.GetComponent<Enemy>()) {
+			enemy.GetComponent<Enemy>().waypoints = WayPoints;
+		}
+		else {
+			enemy.GetComponent<Mushroom>().waypoints = WayPoints;
+		}
+		
     }
 
 	// call by GameManager, for starting wave as now wave number
@@ -39,22 +47,12 @@ public class WaveSpawn : MonoBehaviour {
 		WaveSize = (int) data[2];
 		enemyCount = 0;
 		wavecount++;
+		if (wavecount >= 3) {
+			nowEnemy = 1;
+		}
 	}
 
 	void CreateButton() {
-		// Transform tp = new Vector3(spawnPoint.transform.position.x, 
-		// 						   spawnPoint.transform.position.y, 
-		// 						   spawnPoint.transform.position.z + 10);
-		// tp.position.z += 10;
-
-		// Transform tempP = spawnPoint;
-		// tempP.localPosition = new Vector3(spawnPoint.transform.position.x, 
-		// 						   spawnPoint.transform.position.y, 
-		// 						   spawnPoint.transform.position.z + 10);
-		// Instantiate(StartButton, tempP.position, this.transform.rotation);
-
-
 		Instantiate(StartButton, new Vector3((float)15.5, (float)4.5, (float)-16), this.transform.rotation);
-
 	}
 }

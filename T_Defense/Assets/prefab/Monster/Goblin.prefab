@@ -1073,7 +1073,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Enemybug: {fileID: 2136493347576447029}
   Creature_Damage: 10
-  Speed: 20
+  Speed: 2
   waypoints:
   - {fileID: 0}
   previous_Speed: 0
